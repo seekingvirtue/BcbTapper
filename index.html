@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Tapper</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="startscreen.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active">
+        <header class="title-section">
+            <h1 class="game-title">☕ COFFEE TAPPER ☕</h1>
+            <p class="subtitle">🤡 Welcome to the Coffee Shop! 🤡</p>
+        </header>
+        
+        <div class="animation-area">
+            <div class="floating-beverages"></div>
+            <div class="bouncing-characters"></div>
+            <div class="steam-effects"></div>
+        </div>
+        
+        <nav class="menu-section">
+            <button class="menu-button" id="startGame" data-index="0">🎮 START GAME</button>
+            <button class="menu-button" id="storyMode" data-index="1">📖 STORY MODE</button>
+            <button class="menu-button" id="exitGame" data-index="2">🚪 EXIT GAME</button>
+        </nav>
+        
+        <div class="keyboard-hint" id="keyboardHint">
+            Use ↑↓ to navigate • SPACE to select
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <h1>☕ Coffee Tapper ☕</h1>
+        
+        <div id="gameInfo">
+            <div>Score: <span id="score">0</span></div>
+            <div>Lives: <span id="lives">3</span></div>
+            <div>Level: <span id="level">1</span></div>
+        </div>
+
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+        <div id="instructions">
+            <strong>Controls:</strong><br>
+            Use arrow keys ↑↓ to move between counters<br>
+            Use arrow keys ←→ to move along current counter<br>
+            <strong>Hold SPACEBAR</strong> to charge power, <strong>release</strong> to serve coffee ☕<br>
+            Catch empty mugs 🥤 and collect tips 💰 for bonus points!<br>
+            Tips trigger dancer shows that distract customers!<br>
+            Don't let customers reach the end of the counter!
+        </div>
+
+        <div id="gameOver">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <nav class="game-over-menu">
+                <button class="menu-button game-over-button" id="playAgain" data-index="0" onclick="restartGame()">🎮 Play Again</button>
+                <button class="menu-button game-over-button" id="mainMenu" data-index="1" onclick="returnToStart()">🏠 Main Menu</button>
+            </nav>
+            
+            <div class="keyboard-hint game-over-keyboard-hint" id="gameOverKeyboardHint">
+                Use ↑↓ to navigate • SPACE to select
+            </div>
+        </div>
+    </div>
+
+    <!-- Story Mode Screen -->
+    <div id="storyScreen" class="screen">
+        <header class="story-header">
+            <h1>📖 The Legend of Balistick Coffee Boy</h1>
+            <p>A Tale of Joy, Coffee & Retro Gaming Magic</p>
+        </header>
+        <div class="story-content" id="storyContent">
+            <div class="scrolling-text" id="scrollingText">
+                <div class="story-paragraph">
+                    <p>☕ <strong>Meet Brian, the Balistick Coffee Boy!</strong></p>
+                    <p>In a cozy corner of Albuquerque, where the desert wind carries dreams and the smell of fresh coffee beans, lives our hero - a whimsical soul who discovered the secret to spreading happiness across the land.</p>
+                    
+                    <p>By day, Brian brews the most extraordinary coffee blends, each cup infused with kindness and a sprinkle of vintage gaming wisdom. His coffee doesn't just wake people up - it fills their hearts with joy and their minds with wonderful memories of simpler times.</p>
+                    
+                    <p>However, Brian's true superpower lies in his connection to the golden age of gaming! He shares the magic of Atari spreading retro gaming news like confetti across the internet, making fellow gamers smile from coast to coast!</p>
+                    
+                    <p>🌟 <strong>His Mission</strong></p>
+                    <p>Armed with his coffee-brewing skills and his encyclopedic knowledge of Atari 2600, 7800, Lynx, and Jaguar, Brian embarked on a quest to bring happiness to everyone he meets. Whether it's a perfectly crafted latte or a 5-minute game review that brightens someone's day, he's always one step ahead of the grumpiness!</p>
+                    
+                    <p>That's where YOU come in! You've been chosen to help Brian in his noble quest by mastering the ancient art of Coffee Tapping. Every perfect brew you create brings smiles to customers and every gaming fact shared spreads joy across the digital realm!</p>
+                    
+                    <p><em>✨ Ready to help Brian spread happiness, one coffee at a time? ✨</em></p>
+                    
+                    <p><em>Then prepare to serve coffee and gaming knowledge in, BCB Coffee Tapper!</em></p>
+                </div>
+                
+                <div class="story-end-spacer"></div>
+            </div>
+        </div>
+        <nav class="story-menu-section">
+            <button class="menu-button story-button" id="backToMenu" data-index="0" onclick="returnToStart()">🔙 Back to Menu</button>
+        </nav>
+        
+        <div class="keyboard-hint story-keyboard-hint" id="storyKeyboardHint">
+            Press SPACE to return to menu
+        </div>
+    </div>
+
+    <script src="audioManager.js"></script>
+    <script src="startscreen.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

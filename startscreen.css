@@ -1,0 +1,516 @@
+/* Start Screen Specific Styles */
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Start Screen Layout */
+#startScreen {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    min-height: 100vh;
+}
+
+.title-section {
+    text-align: center;
+    margin-top: 5vh;
+    z-index: 10;
+    position: relative;
+}
+
+.game-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4A4A4A;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0;
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 24px;
+    color: #2F4F4F;
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Animation Area */
+.animation-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-beverages,
+.bouncing-characters,
+.steam-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Menu Section */
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5vh;
+    z-index: 10;
+    position: relative;
+}
+
+.menu-button {
+    background: linear-gradient(145deg, #8B4513, #A0522D);
+    border: 3px solid #FFD700;
+    border-radius: 15px;
+    padding: 15px 30px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+}
+
+.menu-button:hover,
+.menu-button.focused {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    background: linear-gradient(145deg, #A0522D, #CD853F);
+    border-color: #FFF700;
+}
+
+.menu-button.focused {
+    outline: none;
+    border-color: #FFFF00;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 0 0 0 3px rgba(255, 255, 0, 0.3);
+}
+
+.menu-button:active,
+.menu-button.pressed {
+    transform: translateY(0px) scale(0.95);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Floating Elements */
+.floating-element {
+    position: absolute;
+    font-size: 32px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.bouncing-element {
+    position: absolute;
+    font-size: 40px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.steam-element {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Animations */
+@keyframes titleGlow {
+    0%, 100% { 
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 20px rgba(255,215,0,0.6), 2px 2px 4px rgba(0,0,0,0.3);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+@keyframes floatSlow {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% { 
+        transform: translateY(-15px) rotate(90deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.1);
+    }
+}
+
+@keyframes drift {
+    0% { 
+        transform: translateX(-50px);
+    }
+    100% { 
+        transform: translateX(calc(100vw + 50px));
+    }
+}
+
+@keyframes jumpUpAndOut {
+    0% { 
+        transform: translateY(0px);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-200px);
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(-400px);
+        opacity: 0;
+    }
+}
+
+@keyframes steamRise {
+    0% { 
+        transform: translateY(0px);
+        opacity: 0.7;
+    }
+    100% { 
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Story Screen Styles */
+#storyScreen {
+    background: linear-gradient(135deg, #4A4A4A, #696969);
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.story-header h1 {
+    font-size: 36px;
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+.story-content {
+    height: 70vh;
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 2px solid yellow; /* Debug border */
+}
+
+.scrolling-text {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #F5DEB3;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: center;
+    animation: testScroll 60s linear infinite;
+    z-index: 5;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.story-paragraph {
+    margin-bottom: 0;
+    opacity: 1 !important;
+    background: rgba(255, 255, 0, 0.3) !important;
+    border: 2px solid red !important;
+    padding: 15px !important;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.story-paragraph p {
+    margin: 20px 0;
+    color: #FFFFFF !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    line-height: 1.8;
+    text-align: center;
+}
+
+@keyframes testScroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200vh);
+    }
+}
+
+.story-paragraph {
+    margin-bottom: 40px;
+    opacity: 1 !important; /* Force visibility */
+    animation: fadeIn 2s ease-in-out forwards;
+    position: relative; /* Ensure paragraphs move with parent */
+    background: rgba(255, 255, 0, 0.3) !important; /* Yellow background to see text areas */
+    border: 2px solid red !important; /* Red border to see paragraph boundaries */
+    padding: 10px !important;
+}
+
+.story-paragraph p {
+    margin: 15px 0;
+    color: #FFFFFF !important; /* Force white text */
+    font-size: 24px !important; /* Make text bigger */
+    font-weight: bold !important; /* Make text bold */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important; /* Add shadow for visibility */
+}
+
+.story-paragraph:nth-child(1) { animation-delay: 2s; }
+.story-paragraph:nth-child(2) { animation-delay: 8s; }
+.story-paragraph:nth-child(3) { animation-delay: 14s; }
+.story-paragraph:nth-child(4) { animation-delay: 20s; }
+.story-paragraph:nth-child(5) { animation-delay: 26s; }
+.story-paragraph:nth-child(6) { animation-delay: 32s; }
+
+.story-paragraph p {
+    margin: 15px 0;
+}
+
+.story-paragraph strong {
+    color: #FFD700;
+    font-size: 20px;
+}
+
+.story-end-spacer {
+    height: 100vh;
+}
+
+@keyframes scrollUp {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Story screen navigation */
+.story-menu-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.story-button {
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #FFD700;
+}
+
+.story-keyboard-hint {
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .game-title {
+        font-size: 36px;
+    }
+    
+    .subtitle {
+        font-size: 20px;
+    }
+    
+    .menu-button {
+        font-size: 18px;
+        padding: 12px 25px;
+        min-width: 180px;
+    }
+    
+    .floating-element {
+        font-size: 28px;
+    }
+    
+    .bouncing-element {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 28px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+    }
+    
+    .menu-button {
+        font-size: 16px;
+        padding: 10px 20px;
+        min-width: 160px;
+    }
+    
+    .floating-element {
+        font-size: 24px;
+    }
+    
+    .bouncing-element {
+        font-size: 30px;
+    }
+    
+    .animation-area {
+        height: 40vh;
+    }
+}
+
+/* Keyboard navigation indicator */
+.keyboard-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    text-align: right;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.keyboard-hint.show {
+    opacity: 1;
+}
+
+.keyboard-hint.hide {
+    opacity: 0;
+}
+    .floating-element,
+    .bouncing-element,
+    .steam-element {
+        animation: none !important;
+    }
+    
+    .game-title {
+        animation: none !important;
+    }
+    
+    .menu-button {
+        transition: none !important;
+    }
+    
+    .menu-button:hover {
+        transform: none !important;
+    }
+}
+
+/* Keyboard navigation indicator */
+.keyboard-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    text-align: right;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.keyboard-hint.show {
+    opacity: 1;
+}
+
+.keyboard-hint.hide {
+    opacity: 0;
+}
+
+
+@keyframes fadeInPulse {
+    0% { opacity: 0; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.8; transform: scale(1); }
+}
